@@ -112,7 +112,7 @@ A decentralized raffle platform powered by **FHEVM (Fully Homomorphic Encryption
 
 ### Contract Address
 ```
-Sepolia Testnet: 0x08c182B73eBC3a858E763Dae7A550AdcBF541512
+Sepolia Testnet: 0x88e7DBDbe5DEc2041fB859606D42D8980FeE3D2c
 ```
 
 ### Contract Features
@@ -261,7 +261,7 @@ For issues and questions:
 
 - **Zama FHEVM**: https://docs.zama.ai
 - **Sepolia Explorer**: https://sepolia.etherscan.io
-- **Contract**: https://sepolia.etherscan.io/address/0x08c182B73eBC3a858E763Dae7A550AdcBF541512
+- **Contract**: https://sepolia.etherscan.io/address/0x88e7DBDbe5DEc2041fB859606D42D8980FeE3D2c
 
 ## 🎯 Roadmap
 
@@ -275,4 +275,5 @@ For issues and questions:
 ---
 
 **Built with ❤️ using FHEVM and Next.js**
+
 
