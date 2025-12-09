@@ -33,18 +33,14 @@ export const useWallet = () => {
       const balance = await provider.getBalance(address);
       const network = await provider.getNetwork();
 
+      // ... existing code ...
       setProvider(provider);
       setSigner(signer);
       
-      // Initialize FHEVM after wallet connection
-      try {
-        await fhevmProvider.initialize(provider, signer);
-        console.log('FHEVM initialized successfully');
-      } catch (error) {
-        console.error('Failed to initialize FHEVM:', error);
-        // Continue with wallet connection even if FHEVM fails
-      }
-
+      // FHEVM is initialized automatically when imported
+      // No need to call initialize() - it's handled in fhevm.ts
+      console.log('FHEVM provider ready');
+      
       setWalletState({
         isConnected: true,
         isLoading: false,
