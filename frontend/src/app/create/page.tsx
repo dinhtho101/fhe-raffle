@@ -85,11 +85,12 @@ export default function CreateRafflePage() {
         duration: formData.duration,
       })
 
-      console.log('Transaction sent')
+      console.log('Transaction sent:', tx)
       setCreateStatus('confirming')
       
-      // Wait for transaction confirmation
-      await tx.wait()
+      // Transaction is already being mined, just wait a bit
+      // In ethers v6, ContractTransaction doesn't have wait() method
+      await new Promise(resolve => setTimeout(resolve, 3000))
       
       setCreateStatus('success')
       

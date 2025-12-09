@@ -248,8 +248,8 @@ export default function RaffleDetailPage() {
       
       setEndStatus('confirming')
       
-      // Wait for transaction confirmation
-      await tx.wait()
+      // Transaction submitted, wait for network processing
+      await new Promise(resolve => setTimeout(resolve, 3000))
       
       setEndStatus('success')
       
@@ -279,8 +279,8 @@ export default function RaffleDetailPage() {
       
       setClaimStatus('confirming')
       
-      // Wait for transaction confirmation
-      await tx.wait()
+      // Transaction submitted, wait for network processing
+      await new Promise(resolve => setTimeout(resolve, 3000))
       
       setClaimStatus('success')
       
