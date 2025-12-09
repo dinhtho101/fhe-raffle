@@ -21,7 +21,7 @@ export function Toast({
   const [isVisible, setIsVisible] = React.useState(true)
 
   React.useEffect(() => {
-    if (duration > 0) {
+    if (duration > 0 && onClose) {
       const timer = setTimeout(() => {
         setIsVisible(false)
         setTimeout(onClose, 300) // Wait for animation
