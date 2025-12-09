@@ -1,0 +1,22 @@
+{
+  "name": "raffle-contracts",
+  "version": "0.1.0",
+  "description": "FHEVM v0.9 Raffle Smart Contracts",
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "deploy:sepolia": "hardhat run scripts/deploy-new-custom-wallet.js --network sepolia",
+    "verify": "hardhat run scripts/verify-contract.js --network sepolia"
+  },
+  "dependencies": {
+    "@fhevm/solidity": "^0.9.1",
+    "@zama-fhe/oracle-solidity": "^0.0.1",
+    "dotenv": "^17.2.2",
+    "ethers": "^6.7.0"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^6.1.0",
+    "@openzeppelin/contracts": "^4.9.0",
+    "hardhat": "^2.19.0"
+  }
+}
