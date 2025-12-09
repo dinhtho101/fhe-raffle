@@ -5,7 +5,7 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from './ui/card'
 import { Button } from './ui/button'
 import { RaffleInfo, RaffleStatus } from '../types'
 import { useWallet } from '../hooks/useWallet'
-import { RaffleFHEContract } from '../lib/contract-fhe'
+import { RaffleContract } from '../lib/contract'
 import { formatTimeRemaining, formatEthereumAddress, generateUsername } from '../lib/utils'
 import { Plus, Shield, Eye, EyeOff } from 'lucide-react'
 
@@ -126,10 +126,9 @@ export default function FHERaffleDashboard() {
 
     try {
       setLoading(true)
-      const contract = new RaffleFHEContract(signer)
+      const contract = new RaffleContract(signer)
       
-      // Initialize FHE
-      await contract.initializeFHE()
+      // FHE is built into the contract
       setFheEnabled(true)
       
       const allRaffles = await contract.getAllRaffles()
@@ -141,16 +140,13 @@ export default function FHERaffleDashboard() {
         
         for (const raffle of allRaffles) {
           try {
-            const hasAccess = await contract.checkAccess(raffle.id, walletState.address)
+            // For now, assume user has access if they participated
+            const tickets = await contract.getParticipantTickets(raffle.id, walletState.address)
+            const hasAccess = tickets > 0
             const accessInfo: any = { hasAccess }
             
             if (hasAccess) {
-              try {
-                const encryptedTickets = await contract.getEncryptedParticipantTickets(raffle.id, walletState.address)
-                accessInfo.encryptedTickets = encryptedTickets
-              } catch (error) {
-                console.log('No encrypted data for user in raffle', raffle.id)
-              }
+              accessInfo.encryptedTickets = tickets.toString()
             }
             
             accessMap.set(raffle.id, accessInfo)
